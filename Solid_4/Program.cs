@@ -8,7 +8,10 @@
 Опишіть класи книжки (розмір та колір не потрібні, але потрібна ціна та знижки) та верхній одяг (колір, розмір, ціна знижка),
 які реалізують притаманні їм інтерфейси.*/
 
-interface IItem
+/*Порушено принцип розділення інтерфейсу (Interface Segregation Principle). 
+ *Великий інтерфейс треба розбити на дрібніші, щоб класи не реалізовували методи, які їм не потрібні.*/
+
+/*interface IItem
 {
     void ApplyDiscount(String discount);
     void ApplyPromocode(String promocode);
@@ -17,6 +20,60 @@ interface IItem
     void SetSize(byte size);
 
     void SetPrice(double price);
+}*/
+interface IItem
+{
+    void SetPrice(double price);
+}
+
+interface IDiscountable
+{
+    void ApplyDiscount(String discount);
+    void ApplyPromocode(String promocode);
+}
+
+interface IClothing
+{
+    void SetColor(byte color);
+    void SetSize(byte size);
+}
+
+class Book : IItem, IDiscountable
+{
+    public void SetPrice(double price)
+    {
+    }
+
+    public void ApplyDiscount(String discount)
+    {
+    }
+
+    public void ApplyPromocode(String promocode)
+    {
+    }
+}
+
+class Outerwear : IItem, IDiscountable, IClothing
+{
+    public void SetPrice(double price)
+    {
+    }
+
+    public void ApplyDiscount(String discount)
+    {
+    }
+
+    public void ApplyPromocode(String promocode)
+    {
+    }
+
+    public void SetColor(byte color)
+    {
+    }
+
+    public void SetSize(byte size)
+    {
+    }
 }
 
 class Program
